@@ -14,17 +14,14 @@ def home(request):
         if user is not None:
             login(request, user)
             messages.success(request, "You have successfully logged in.")
-            return redirect("home")
+            return redirect('home')
         else:
-            messages.success(request, "There was an error logging you in. Please try again.")
-            return redirect("home")
+            messages.success(request, "There was an error logging in. Please try again.")
+            return redirect('home')
     else:
         return render(request, "home.html", {})
 
-
-def login_user(request):
-    pass
-
-
 def logout_user(request):
-    pass
+    logout(request)
+    messages.success(request, "You have successfully logged out.")
+    return redirect('home')
