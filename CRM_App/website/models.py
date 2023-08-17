@@ -9,7 +9,8 @@ class Record(models.Model):
     phone = models.CharField(max_length=50)
     address = models.CharField(max_length=150)
     city = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
+    state = models.CharField(max_length=50, default='')
+    country = models.CharField(max_length=50)
     postal_code = models.CharField(max_length=30)
     
     def __str__(self):
