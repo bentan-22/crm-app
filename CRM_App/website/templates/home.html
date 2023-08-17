@@ -34,35 +34,36 @@
 </table>
 
 {% else %}
-
-<h1>Login</h1>
-<br />
-
-<form method="POST" action="{% url 'home' %}">
-  {% csrf_token %}
-  <div class="mb-3">
-    <input
-      type="text"
-      class="form-control"
-      name="username"
-      ,
-      placeholder="Enter your username"
-      required
-    />
-  </div>
+<div class="col-md-6 offset-md-3">
+  <h1>Login</h1>
   <br />
-  <div class="mb-3">
-    <input
-      type="password"
-      class="form-control"
-      name="password"
-      ,
-      placeholder="Enter your password"
-      required
-    />
-  </div>
-  <br />
-  <button type="submit" class="btn btn-secondary">Login</button>
-</form>
 
-{% endif %} {% endblock %}
+  <form method="POST" action="{% url 'home' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        ,
+        placeholder="Enter your username"
+        required
+      />
+    </div>
+    <br />
+    <div class="mb-3">
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        ,
+        placeholder="Enter your password"
+        required
+      />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-secondary">Login</button>
+  </form>
+
+  {% endif %} {% endblock %}
+</div>
