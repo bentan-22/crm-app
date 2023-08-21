@@ -3,36 +3,36 @@
 <div class="card">
   <div class="card-header">
     <strong>
-      {{ customer_record.first_name}} {{ customer_record.last_name}}
+      {{ user_record.first_name}} {{ user_record.last_name}}
     </strong>
   </div>
   <div class="card-body">
-    <p class="card-text"><strong>Email: </strong>{{ customer_record.email }}</p>
-    <p class="card-text"><strong>Phone: </strong>{{ customer_record.phone }}</p>
+    <p class="card-text"><strong>Email: </strong>{{ user_record.email }}</p>
+    <p class="card-text"><strong>Phone: </strong>{{ user_record.phone }}</p>
     <p class="card-text">
-      <strong>Address: </strong>{{ customer_record.address }}
+      <strong>Address: </strong>{{ user_record.address }}
     </p>
-    <p class="card-text"><strong>City: </strong>{{ customer_record.city }}</p>
-    <p class="card-text"><strong>State: </strong>{{ customer_record.state }}</p>
+    <p class="card-text"><strong>City: </strong>{{ user_record.city }}</p>
+    <p class="card-text"><strong>State: </strong>{{ user_record.state }}</p>
     <p class="card-text">
-      <strong>Country: </strong>{{ customer_record.country }}
-    </p>
-    <p class="card-text">
-      <strong>Postal Code: </strong>{{ customer_record.postal_code }}
+      <strong>Country: </strong>{{ user_record.country }}
     </p>
     <p class="card-text">
-      <strong>Create At: </strong>{{ customer_record.created_at }}
+      <strong>Postal Code: </strong>{{ user_record.postal_code }}
     </p>
-    <p class="card-text"><strong>ID: </strong>{{ customer_record.id }}</p>
+    <p class="card-text">
+      <strong>Create At: </strong>{{ user_record.created_at }}
+    </p>
+    <p class="card-text"><strong>ID: </strong>{{ user_record.id }}</p>
   </div>
 </div>
 
 <br /><br />
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
-<a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger"
+<a href="{% url 'delete_record' user_record.id %}" class="btn btn-danger"
   >Delete</a
 >
-<a href="{% url 'update_record' customer_record.id %}" class="btn btn-secondary"
+<a href="{% url 'update_record' user_record.id %}" class="btn btn-secondary"
   >Update Record</a
 >
 
