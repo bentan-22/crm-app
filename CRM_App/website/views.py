@@ -4,6 +4,9 @@ from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm
 from .models import Record
 from post_office import mail
+import calendar as cal_module
+from calendar import HTMLCalendar
+from datetime import datetime
 
 # Create your views here.
 def home(request):
@@ -24,7 +27,7 @@ def home(request):
             )
             return redirect("home")
     else:
-        return render(request, "home.html", {'records':records})
+        return render(request, "home.html", {'records': records})
 
 def logout_user(request):
     logout(request)
@@ -45,9 +48,9 @@ def register_user(request):
 			return redirect('home')
 	else:
 		form = SignUpForm()
-		return render(request, 'register.html', {'form':form})
+		return render(request, 'register.html', {'form': form})
 
-	return render(request, 'register.html', {'form':form})
+	return render(request, 'register.html', {'form': form})
 
 def user_record(request, pk):
     if request.user.is_authenticated:
@@ -76,7 +79,7 @@ def add_record(request):
                 add_record = form.save()
                 messages.success(request,'Record added successfully!')
                 return redirect('home')
-        return render(request, 'add_record.html', {'form':form})
+        return render(request, 'add_record.html', {'form': form})
     else: 
         messages.success(request, "You must be logged in to do that.")
         return redirect('home')
@@ -89,10 +92,40 @@ def update_record(request, pk):
             form.save()
             messages.success(request, "Record updated successfully!")
             return redirect('home')
-        return render(request, 'update_record.html', {'form':form})  
+        return render(request, 'update_record.html', {'form': form})  
     else:
         messages.success(request, "You must be logged in to do that.")
         return redirect('home')
+
+def calendar(request, year, month):
+    # convert month from name to number
+    month = month.capitalize()
+    month_number = list(cal_module.month_name).index(month)
+    month_number = int(month_number)
+    
+    # create calendar
+    cal = HTMLCalendar().formatmonth(
+        year,
+        month_number
+        )
+    
+    # get current date
+    now = datetime.now()
+    current_date = now.date()
+    # format date
+    formatted_date = current_date.strftime('%d %B %Y')
+    
+    # get current time
+    current_time = now.strftime('%I:%M %p')
+    
+    return render(request, 'calendar.html', {
+        "year": year,
+        "month": month,
+        "month_number": month_number,
+        "cal": cal,
+        "formatted_date": formatted_date,
+        "current_time": current_time,
+        })
 
 # def send_email_view(request):
 #     mail.send(
@@ -101,5 +134,4 @@ def update_record(request, pk):
 #         message='Hi there!',
 #         html_message='Hi <strong>there</strong>!',
 #     )
-    
 #     return render(request, 'template.html', context)

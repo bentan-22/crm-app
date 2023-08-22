@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="text-align: center;">
+    {{ cal|safe }}
+    <br/>
+    as of {{ formatted_date }} {{ current_time }}
+</div>
+{% endblock %}
