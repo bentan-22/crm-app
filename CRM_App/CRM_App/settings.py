@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 
 from decouple import config
-BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = config("SECRET_KEY")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -138,7 +136,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'weiliang.coding@gmail.com'
-EMAIL_HOST_PASSWORD = 'slyiebsgjbzmhcla'
+EMAIL_HOST_PASSWORD = config("SECRET_KEY2")
+print("SECRET_KEY2:", EMAIL_HOST_PASSWORD)  # Print the value
 
 POST_OFFICE = {
     'DEFAULT_PRIORITY': 'now',
