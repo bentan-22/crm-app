@@ -135,3 +135,21 @@ def calendar(request, year, month):
 #         html_message='Hi <strong>there</strong>!',
 #     )
 #     return render(request, 'template.html', context)
+
+def send_selected_emails(request):
+    if request.method == 'POST':
+        selected_record_ids = request.POST.getlist('selected_records')
+        selected_records = Record.objects.filter(id__in=selected_record_ids)
+
+        for record in selected_records:
+            context = {'record': record, 'site_name': 'Your Site Name'}
+            mail.send(
+                recipients=[record.email],
+                subject='Test Subject',
+                message='Testing123',
+            )
+
+        return render(request, 'send_emails_success.html')
+
+    records = Record.objects.all()
+    return render(request, 'send_selected_emails.html', {'records': records})

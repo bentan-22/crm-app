@@ -11,4 +11,5 @@ urlpatterns = [
     path("add_record/", views.add_record, name="add_record"),
     path("update_record/<int:pk>", views.update_record, name="update_record"),
     path('<int:year>/<str:month>/', views.calendar, name="calendar"),
+    path('send-emails/', views.send_selected_emails, name='send_selected_emails'),
 ]

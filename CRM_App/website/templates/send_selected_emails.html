@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Select Records to Send Emails</title>
+  </head>
+  <body>
+    <h1>Select Records to Send Emails</h1>
+    <form method="post" action="{% url 'send_selected_emails' %}">
+      {% csrf_token %}
+      <ul>
+        {% for record in records %}
+        <li>
+          <input
+            type="checkbox"
+            name="selected_records"
+            value="{{ record.id }}"
+          />
+          {{ record.first_name }} {{ record.last_name }} - {{ record.email }}
+        </li>
+        {% endfor %}
+      </ul>
+      <button type="submit">Send Selected Emails</button>
+    </form>
+  </body>
+</html>
