@@ -10,4 +10,4 @@ To be updated.
 ## Description of App
 A basic CRM app that allows registered users to carry out CRUD functions. More features to be added.
 ## Credits
-This app was created based on a [tutorial](https://www.youtube.com/watch?v=t10QcFx7d5k) by [John Elder](https://github.com/flatplanet).
+This app was created based on this [tutorial](https://www.youtube.com/watch?v=t10QcFx7d5k) and this [tutorial](https://www.youtube.com/watch?v=4EJlrweJE-M) by [John Elder](https://github.com/flatplanet).
