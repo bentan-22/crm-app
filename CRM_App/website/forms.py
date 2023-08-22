@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django import forms
 from .models import Record
 
-
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(
         label="",

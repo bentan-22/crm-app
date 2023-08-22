@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm
 from .models import Record
+from post_office import mail
 
 # Create your views here.
 def home(request):
@@ -25,12 +26,10 @@ def home(request):
     else:
         return render(request, "home.html", {'records':records})
 
-
 def logout_user(request):
     logout(request)
     messages.success(request, "You have successfully logged out!")
     return redirect("home")
-
 
 def register_user(request):
 	if request.method == 'POST':
@@ -58,7 +57,6 @@ def user_record(request, pk):
     else:
         messages.success(request, "You must be logged in to view that page.")
         return redirect('home')
-
 
 def delete_record(request, pk):
     if request.user.is_authenticated:
@@ -94,4 +92,14 @@ def update_record(request, pk):
         return render(request, 'update_record.html', {'form':form})  
     else:
         messages.success(request, "You must be logged in to do that.")
-        return redirect('home')        
+        return redirect('home')
+
+# def send_email_view(request):
+#     mail.send(
+#         ['recipient@example.com'],
+#         subject='My email',
+#         message='Hi there!',
+#         html_message='Hi <strong>there</strong>!',
+#     )
+    
+#     return render(request, 'template.html', context)
